@@ -1,5 +1,5 @@
 // services/analyticsApi.js
-const API_BASE_URL = 'http://backend:8000'; // URL del servicio backend en Docker Compose
+const API_BASE_URL = 'http://localhost:8000'; // URL del servicio backend 
 
 export const analyticsApi = {
   // Obtener gráfico de lanzamientos por año
