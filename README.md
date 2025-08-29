@@ -37,7 +37,7 @@ docker-compose up --build
 
 ---
 
-Adjunto capturas y un video de la funcionalidad.
+Adjunto capturas y un video de la funcionalidad (si no le deja reproducir el video, descarguelo y visualicelo con el reproductor VLC).
 
 ### ¿Qué hacer si Docker no compila?
 Si tienes problemas para levantar el proyecto con Docker, puedes correr los servicios manualmente:
@@ -60,3 +60,4 @@ uvicorn moduloExtra:app --host 0.0.0.0 --port 8000
 ```
 
 Así podrás probar el dashboard y la API de IA sin depender de Docker.
+
