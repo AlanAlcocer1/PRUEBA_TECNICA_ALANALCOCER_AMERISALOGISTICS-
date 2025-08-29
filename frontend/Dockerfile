@@ -1,18 +1,21 @@
-# Usar Node 20 (compatible con Vite)
-FROM node:20-alpine
+FROM node:20-slim
 
-# Directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos de dependencias e instalar
 COPY package*.json ./
-RUN npm install
 
-# Copiar todo el proyecto
+# SOLUCIÓN NUCLEAR: Instalar MANUALMENTE todas las variantes de rollup
+RUN npm install @rollup/rollup-linux-x64-gnu --save-optional --force && \
+    npm install @rollup/rollup-linux-x64-musl --save-optional --force && \
+    npm install @rollup/rollup-win32-x64-msvc --save-optional --force && \
+    npm install @rollup/rollup-darwin-x64 --save-optional --force && \
+    npm install @rollup/rollup-darwin-arm64 --save-optional --force
+
+# Ahora instalar el resto de dependencias
+RUN npm install --force --legacy-peer-deps
+
 COPY . .
 
-# Exponer puerto de Vite
 EXPOSE 5173
 
-# Comando para iniciar la app
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev", "--host", "0.0.0.0"]
