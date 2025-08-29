@@ -1,6 +1,6 @@
 # Prueba Técnica SpaceX Dashboard 2025
 
-Esta prueba tecnica es un dashboard interactivo para visualizar y analizar datos de lanzamientos de SpaceX. Incluye funcionalidades avanzadas como visualización en mapas, análisis estadístico con IA y exportación de datos. 
+Esta prueba técnica es un dashboard interactivo para visualizar y analizar datos de lanzamientos de SpaceX. Incluye funcionalidades avanzadas como visualización en mapas, análisis estadístico con IA y exportación de datos.
 
 ## Funcionalidades principales
 - Visualización de lanzamientos en tabla y mapa.
@@ -38,3 +38,25 @@ docker-compose up --build
 ---
 
 Adjunto capturas y un video de la funcionalidad.
+
+### ¿Qué hacer si Docker no compila?
+Si tienes problemas para levantar el proyecto con Docker, puedes correr los servicios manualmente:
+
+**Frontend:**
+```sh
+cd dashboard/frontend
+npm install
+npm run dev
+```
+
+**Backend:**
+```sh
+cd dashboard/backend
+python -m venv venv
+venv\Scripts\activate  # En Windows
+source venv/bin/activate  # En Linux/Mac
+pip install -r requirements.txt
+uvicorn moduloExtra:app --host 0.0.0.0 --port 8000
+```
+
+Así podrás probar el dashboard y la API de IA sin depender de Docker.
